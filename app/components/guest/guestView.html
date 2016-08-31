@@ -1,0 +1,148 @@
+<div ng-controller="guestCtrl">
+
+    <md-toolbar class="md-cyan">
+        <div class="md-toolbar-tools">
+            <h1 class="md-flex">Test GuestBook</h1>
+        </div>
+    </md-toolbar>
+
+    <md-content class="md-padding" layout-xs="row" layout="row">
+
+    <div flex-xs flex-gt-xs="30" layout="column">
+        <md-card>
+            <img src="img/logo.jpeg" class="md-card-image" alt="logo">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">InesSoft</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <p>
+                    InesSoft - компания , которая занимается разработкой заказного программного обеспечения, где в теплой дружеской атмосфере работают профессионалы своего дела.
+                </p>
+                <p>
+                    Наша история началась в 2006 году, с группы аспирантов, которым в рамках своих научных работ, для получения результатов, было необходимо закрепить свои идеи на практике.
+                </p>
+                <p>
+                    Именно с  тех пор мы стали площадкой для реализации научных идей молодых ученых,  талантливых и творческих специалистов.
+                </p>
+                <p>
+                    На сегодняшний день у компании 2 офиса, расположенных в г.Астана и Караганда, беспрерывно растущий  штат и  своя система подхода как каждому сотруднику  по отдельности, так и к коллективу в целом.
+                </p>
+            </md-card-content>
+        </md-card>
+    </div>
+
+    <div flex-xs flex-gt-xs="70" layout="column">
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Гостевая книга</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <md-list flex>
+                    <md-list-item class="md-3-line person" ng-repeat="item in dataView = (data | limitTo: load)">
+                        <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+                        <div class="md-list-item-text" layout="column">
+                            <h3>{{ item.who }}</h3>
+                            <h4>{{ item.position }}</h4>
+                            <p>{{ item.comment }}</p>
+                        </div>
+                        <div class="edit">
+                            <img ng-src="img/icons/edit.png" class="md-icon-button" alt="edit" ng-click="editing($index, item)"/>
+                            <img ng-src="img/icons/del.png" class="md-icon-button" alt="del" ng-click="del($index)" />
+                        </div>
+                        <small>{{ item.when }}</small>
+                    </md-list-item>
+                    <div class="load" ng-click="moreLoad(dataView)" ng-show="visibleLoad">Загрузить еще</div>
+                    <md-divider ></md-divider>
+                </md-list>
+
+
+                <md-content layout-padding>
+
+                <form ng-submit="addComment(form)">
+
+                <span class="md-headline">Добавить комментарии</span>
+
+                <md-input-container class="md-block">
+                    <label>Имя</label>
+                    <input required name="clientName" ng-model="form.who" >
+                    <div ng-messages="projectForm.clientName.$error">
+                        <div ng-message="required">Это обязательное поле</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Должность</label>
+                    <input required name="clientPosition" ng-model="form.position">
+                    <div ng-messages="projectForm.clientPosition.$error">
+                        <div ng-message="required">Это обязательное поле</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Комментари</label>
+                    <input required name="clientComment" ng-model="form.comment">
+                    <div ng-messages="projectForm.clientComment.$error">
+                        <div ng-message="required">Это обязательное поле</div>
+                    </div>
+                </md-input-container>
+
+                <section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
+                    <md-button type="submit" class="md-raised md-primary">Отправить</md-button>
+                </section>
+
+                </form>
+                    </md-content>
+            </md-card-content>
+        </md-card>
+    </div>
+
+</md-content>
+
+    <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+
+        <md-toolbar class="md-theme-light">
+            <h1 class="md-toolbar-tools">Редактирование</h1>
+        </md-toolbar>
+
+        <md-content layout-padding>
+
+            <form ng-submit="editComment(edit)">
+
+                <md-input-container class="md-block">
+                    <label>Имя</label>
+                    <input required name="clientName" ng-model="edit.who" >
+                    <div ng-messages="projectForm.clientName.$error">
+                        <div ng-message="required">Это обязательное поле</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Должность</label>
+                    <input required name="clientPosition" ng-model="edit.position">
+                    <div ng-messages="projectForm.clientPosition.$error">
+                        <div ng-message="required">Это обязательное поле</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Комментари</label>
+                    <textarea required name="clientComment" ng-model="edit.comment"></textarea>
+                    <div ng-messages="projectForm.clientComment.$error">
+                        <div ng-message="required">Это обязательное поле</div>
+                    </div>
+                </md-input-container>
+
+                <section layout="row" layout-sm="column" layout-align="start center" layout-wrap>
+                    <md-button type="submit" class="md-primary">Подтвердить</md-button>
+                </section>
+
+            </form>
+        </md-content>
+
+    </md-sidenav>
+
+</div>
