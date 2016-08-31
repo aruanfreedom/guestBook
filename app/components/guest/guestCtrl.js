@@ -36,67 +36,11 @@ angular.module('guestApp').controller('guestCtrl', function($scope, $mdSidenav, 
             who: 'Аруан',
             when: '18:21:17',
             comment: "Работаю в компании уже 3 года. Все условия для продуктивной работы. Коллектив просто супер!"
-        },
-        {
-            id : 4,
-            face : imagePath,
-            position: 'Фронтенд-разработчик',
-            who: 'Аруан',
-            when: '18:21:17',
-            comment: "Работаю в компании уже 3 года. Все условия для продуктивной работы. Коллектив просто супер!"
-        },
-        {
-            id : 5,
-            face : imagePath,
-            position: 'Фронтенд-разработчик',
-            who: 'Аруан',
-            when: '18:21:17',
-            comment: "Работаю в компании уже 3 года. Все условия для продуктивной работы. Коллектив просто супер!"
-        },
-        {
-            id : 6,
-            face : imagePath,
-            position: 'Фронтенд-разработчик',
-            who: 'Айгерим',
-            when: '18:21:17',
-            comment: "Работаю в компании уже 3 года. Все условия для продуктивной работы. Коллектив просто супер!"
-        },
-        {
-            id : 7,
-            face : imagePath,
-            position: 'Фронтенд-разработчик',
-            who: 'Аруан',
-            when: '18:21:17',
-            comment: "Работаю в компании уже 3 года. Все условия для продуктивной работы. Коллектив просто супер!"
-        },
-        {
-            id : 8,
-            face : imagePath,
-            position: 'Фронтенд-разработчик',
-            who: 'Аруан',
-            when: '18:21:17',
-            comment: "Работаю в компании уже 3 года. Все условия для продуктивной работы. Коллектив просто супер!"
-        },
-        {
-            id : 9,
-            face : imagePath,
-            position: 'Фронтенд-разработчик',
-            who: 'Аруан',
-            when: '18:21:17',
-            comment: "Работаю в компании уже 3 года. Все условия для продуктивной работы. Коллектив просто супер!"
-        },
-        {
-            id : 10,
-            face : imagePath,
-            position: 'Фронтенд-разработчик',
-            who: 'Аруан',
-            when: '18:21:17',
-            comment: "Работаю в компании уже 3 года. Все условия для продуктивной работы. Коллектив просто супер!"
         }
     ];
 
     $scope.form = {
-        id: Math.random(),
+        id: Math.floor(Math.random() * 10000),
         face: imagePath,
         when: new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds()
     };
@@ -108,7 +52,7 @@ angular.module('guestApp').controller('guestCtrl', function($scope, $mdSidenav, 
             typeof $scope.form.comment !== 'undefined') {
 
             $scope.form = {
-                id: Math.random() * 10000,
+                id: Math.floor(Math.random() * 10000),
                 face: imagePath,
                 when: new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds()
             };
@@ -148,7 +92,7 @@ angular.module('guestApp').controller('guestCtrl', function($scope, $mdSidenav, 
         $scope.data.splice(index, 1)
     };
 
-    $scope.load = 4;
+    $scope.load = 5;
     $scope.visibleLoad = true;
 
     $scope.moreLoad = function (data) {

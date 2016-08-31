@@ -2,7 +2,7 @@
 
     <md-toolbar class="md-cyan">
         <div class="md-toolbar-tools">
-            <h1 class="md-flex">Test GuestBook</h1>
+            <h1 class="md-flex">InesSoft</h1>
         </div>
     </md-toolbar>
 
@@ -42,7 +42,7 @@
             </md-card-title>
             <md-card-content>
                 <md-list flex>
-                    <md-list-item class="md-3-line person" ng-repeat="item in dataView = (data | limitTo: load)">
+                    <md-list-item class="md-3-line person" ng-repeat="item in dataView = (data | limitTo: load | orderBy: '-id')">
                         <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
                         <div class="md-list-item-text" layout="column">
                             <h3>{{ item.who }}</h3>
