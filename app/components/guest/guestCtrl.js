@@ -39,6 +39,16 @@ angular.module('guestApp').controller('guestCtrl', function($scope, $mdSidenav, 
         }
     ];
 
+    $scope.data.reverse();
+
+    function hiddenLoad() {
+        if ($scope.data.length > $scope.load) {
+            $scope.visibleLoad = true;
+        } else {
+            $scope.visibleLoad = false;
+        }
+    }
+
     $scope.form = {
         id: Math.floor(Math.random() * 10000),
         face: imagePath,
@@ -58,9 +68,11 @@ angular.module('guestApp').controller('guestCtrl', function($scope, $mdSidenav, 
             };
 
             $scope.data.push(form);
-            console.log($scope.data);
+            hiddenLoad();
         }
     };
+
+
 
     $scope.edit = {
         who: null,
@@ -88,17 +100,16 @@ angular.module('guestApp').controller('guestCtrl', function($scope, $mdSidenav, 
         $mdSidenav('right').close();
     };
 
+    $scope.load = 5;
+    $scope.visibleLoad = false;
+
     $scope.del = function (index) {
-        $scope.data.splice(index, 1)
+        $scope.data.splice(index, 1);
+        hiddenLoad();
     };
 
-    $scope.load = 5;
-    $scope.visibleLoad = true;
-
-    $scope.moreLoad = function (data) {
-        if ( $scope.data.length === data.length ) {
-            $scope.visibleLoad = false;
-        }
+    $scope.moreLoad = function () {
+        hiddenLoad();
         $scope.load = $scope.load + $scope.load;
     };
 

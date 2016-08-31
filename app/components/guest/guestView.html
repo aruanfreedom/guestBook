@@ -42,7 +42,7 @@
             </md-card-title>
             <md-card-content>
                 <md-list flex>
-                    <md-list-item class="md-3-line person" ng-repeat="item in dataView = (data | limitTo: load | orderBy: '-id')">
+                    <md-list-item class="md-3-line person" ng-repeat="item in data | limitTo: load | orderBy: '-id'">
                         <img ng-src="{{item.face}}" class="md-avatar" alt="{{item.who}}" />
                         <div class="md-list-item-text" layout="column">
                             <h3>{{ item.who }}</h3>
@@ -55,7 +55,7 @@
                         </div>
                         <small>{{ item.when }}</small>
                     </md-list-item>
-                    <div class="load" ng-click="moreLoad(dataView)" ng-show="visibleLoad">Загрузить еще</div>
+                    <div class="load" ng-click="moreLoad()" ng-show="visibleLoad">Загрузить еще</div>
                     <md-divider ></md-divider>
                 </md-list>
 
