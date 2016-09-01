@@ -36,13 +36,23 @@ angular.module('guestApp').controller('guestCtrl', function($scope, $mdSidenav, 
             who: 'Аруан',
             when: '18:21:17',
             comment: "Работаю в компании уже 3 года. Все условия для продуктивной работы. Коллектив просто супер!"
+        },
+        {
+            id : 4,
+            face : imagePath,
+            position: 'Фронтенд-разработчик',
+            who: 'Аруан',
+            when: '18:21:17',
+            comment: "Работаю в компании уже 3 года. Все условия для продуктивной работы. Коллектив просто супер!"
         }
     ];
 
     $scope.data.reverse();
 
     function hiddenLoad() {
-        if ($scope.data.length > $scope.load) {
+        console.log($scope.data.length);
+        console.log($scope.load);
+        if ($scope.data.length >= $scope.load) {
             $scope.visibleLoad = true;
         } else {
             $scope.visibleLoad = false;
@@ -67,12 +77,10 @@ angular.module('guestApp').controller('guestCtrl', function($scope, $mdSidenav, 
                 when: new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds()
             };
 
-            $scope.data.push(form);
+            $scope.data.unshift(form);
             hiddenLoad();
         }
     };
-
-
 
     $scope.edit = {
         who: null,
